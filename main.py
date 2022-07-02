@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import matplotlib.pyplot as plt
+# To test the algorithm, install mediapipe first
+# pip install mediapipe
 
 # TODO List:
 # Make backgrounds auto-crop to fit the sample image (sample image and background image needs to be the same size)
