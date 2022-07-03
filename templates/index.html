@@ -1,0 +1,33 @@
+<html>
+    <title>Background Replacement</title>
+    <head>
+        Background Replacement
+    </head>
+    <body>
+    <link rel="stylesheet" href="{{ url_for('static', filename = '/style/style.css')}}">
+        <br>
+        {% if filename %}
+                <span class="box">
+        <image src="{{ url_for('static', filename = '/Images/'+filename)}}" class ="imageUpload"></image>
+                </span>
+                <span class="box">
+        <image src="{{ url_for('static', filename = '/Images/'+filename2)}}" class="imageUpload"></image>
+                </span>
+        {% endif %}
+        <form method="post" action="/home" enctype="multipart/form-data">
+            <p>
+                <span class="box">
+                <input type="file" name="file" autocomplete="off" required>
+                </span>
+                <span class="box">
+                <input type="file" name="file2" autocomplete="off" required>
+                </span>
+            </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+        </form>
+
+
+    </body>
+</html>
