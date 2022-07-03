@@ -59,5 +59,7 @@ def upload_image():
 
     return render_template("index.html")
 
-
+@app.route('/display/<filename>')
+def display_image(filename):
+    return redirect(url_for('static', filename = '/Images/'+filename),code=301)
 app.run(host='0.0.0.0', port=port, debug=True)
