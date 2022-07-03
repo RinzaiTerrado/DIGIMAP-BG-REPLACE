@@ -11,7 +11,8 @@ app = Flask(__name__)
 
 port = int(os.environ.get('PORT', 5000))
 
-@app.route("/home", methods=['POST',"GET"])
+
+@app.route("/", methods=['POST',"GET"])
 def upload_image():
     if request.method == "POST":
         image = request.files['file']
