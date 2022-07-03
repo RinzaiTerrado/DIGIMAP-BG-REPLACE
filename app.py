@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 
-@app.route("/home", methods=['POST',"GET"])
+@app.route("/", methods=['POST',"GET"])
 def upload_image():
     if request.method == "POST":
         image = request.files['file']
