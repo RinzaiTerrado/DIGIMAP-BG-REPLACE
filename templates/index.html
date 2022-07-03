@@ -1,50 +1,104 @@
 <html>
-    <title>Background Replacement</title>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <style>
-            .img-thumbnail{
-                width: 300px;
-                height: 300px;
-            }
+<title>Background Replacement</title>
 
-            .box {
-                 width: 500px;
-            }
-            h1{
-                color: rgb(86, 110, 80);
-            }
-        </style>
-        <h1 >RePlace</h1>
-    </head>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .img-thumbnail {
+            width: 300px;
+            height: 300px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
 
-    <body>   
+        .box {
+            width: 500px;
+        }
+
+        .symbol {
+            display: inline;
+        }
+
+        .image_div {
+            margin: auto;
+            height: 300px;
+
+        }
+
+        h1 {
+            color: rgb(86, 110, 80);
+            margin-left: 20px;
+            text-align: center;
+        }
+
+        input {
+            display: inline;
+            margin-left: 20px;
+            margin-right: 80px;
+            color: rgb(86, 110, 80);
+        }
+
+        .form-inline {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+        }
+
+        hr{
+            border: 2px solid rgb(86, 110, 80);
+            
+        }
+
+        .info{
+            background-color: rgb(86, 110, 80);
+        }
+
+        .btn{
+            background-color: rgb(86, 110, 80);
+        }
+    </style>
+    <h1>RePlace</h1>
+    <hr>
+</head>
+
+<body>
     <br>
+    <div class="image_div">
         {% if filename %}
-                <span class="box">
-        <image src="{{ url_for('static', filename = '/Images/'+filename)}}" class ="img-thumbnail"></image>
-                </span>
-                <span class="box">
+        <image src="{{ url_for('static', filename = '/Images/'+filename)}}" class="img-thumbnail"></image>
+
+        <h2 class="symbol">+</h2>
+
         <image src="{{ url_for('static', filename = '/Images/'+filename2)}}" class="img-thumbnail"></image>
-                </span>
-                <span class="box">
+
+        <h2 class="symbol">=</h2>
+
         <image src="{{ url_for('static', filename = '/Output/output.jpeg')}}" class="img-thumbnail"></image>
-                </span>
+
         {% endif %}
-        <form method="post" action="/" enctype="multipart/form-data">
+    </div>
+
+    <div>
+
+        <br>
+        <form method="post" class="form-inline" action="/" enctype="multipart/form-data">
+
+            <input type="file" name="file" autocomplete="off" required>
+            <input type="file" name="file2" autocomplete="off" required>
+            <br>
             <p>
-                <span class="box">
-                <input type="file" name="file" autocomplete="off" required>
-                </span>
-                <span class="box">
-                <input type="file" name="file2" autocomplete="off" required>
-                </span>
+                <input type="submit" class="btn btn-primary" value="Submit">
             </p>
-        <p>
-            <input type="submit"  class="btn btn-primary" value="Submit">
-        </p>
         </form>
+    </div>
+    <br><br>
+    <div class="info">
+        <br>
+        <h1 style="color: white;">Information</h1>
+        <p>Replace is a web application where you can change your Background by 
+            uploading 2 pictures.
+        </p>
+    </div>
+</body>
 
-
-    </body>
 </html>
