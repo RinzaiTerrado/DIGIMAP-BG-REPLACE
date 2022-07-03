@@ -13,6 +13,9 @@
                 <span class="box">
         <image src="{{ url_for('static', filename = '/Images/'+filename2)}}" class="imageUpload"></image>
                 </span>
+                <span class="box">
+        <image src="{{ url_for('static', filename = '/Output/output.jpeg')}}" class="imageUpload"></image>
+                </span>
         {% endif %}
         <form method="post" action="/home" enctype="multipart/form-data">
             <p>

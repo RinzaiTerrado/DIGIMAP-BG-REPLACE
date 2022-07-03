@@ -8,7 +8,6 @@ from PIL import Image
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
-app.config['IMAGE_UPLOADS'] = '/Users/Terra/Downloads/DIGIMAP/static/images'
 
 @app.route("/home", methods=['POST',"GET"])
 def upload_image():
@@ -22,26 +21,35 @@ def upload_image():
         filename = secure_filename(image.filename)
         filename2 = secure_filename(image2.filename)
         basedir = os.path.abspath(os.path.dirname(__file__))
-        image.save(os.path.join(basedir, app.config["IMAGE_UPLOADS"],filename))
-        image2.save(os.path.join(basedir, app.config["IMAGE_UPLOADS"],filename2))
+        image.save("static/images/"+filename)
+        image2.save("static/images/"+filename2)
+
 
 
         change_background_mp = mp.solutions.selfie_segmentation
         change_bg_segment = change_background_mp.SelfieSegmentation()
 
-        sample_img = cv2.imread(os.path.join(basedir, app.config["IMAGE_UPLOADS"],filename))
+        sample_img = cv2.imread("static/images/"+filename)
+        bg_img = cv2.imread("static/images/"+filename2)
+
+
+        #get smallest width and smallest height
+        h,w,c = sample_img.shape
+        
+
+        dim = (w,h)
+        resized_bg = cv2.resize(bg_img, dim, interpolation = cv2.INTER_AREA)
+
         RGB_sample_img = cv2.cvtColor(sample_img, cv2.COLOR_BGR2RGB)
 
         result = change_bg_segment.process(RGB_sample_img)
         binary_mask = result.segmentation_mask > 0.9
         binary_mask_3 = np.dstack((binary_mask,binary_mask,binary_mask))
         output_image = np.where(binary_mask_3, sample_img, 255)    
-        bg_img = cv2.imread(os.path.join(basedir, app.config["IMAGE_UPLOADS"],filename2))
 
-        output_image = np.where(binary_mask_3, sample_img, bg_img)  
+        output_image = np.where(binary_mask_3, sample_img, resized_bg)  
 
-        im = Image.fromarray(output_image)
-        im.save("output.jpeg")
+        cv2.imwrite("static/output/output.jpeg", output_image)
 
 
         return render_template("index.html", filename=filename, filename2=filename2)
