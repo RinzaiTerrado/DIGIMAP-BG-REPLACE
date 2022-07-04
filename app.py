@@ -9,7 +9,6 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 
-port = int(os.environ.get('PORT', 5000))
 
 
 @app.route("/", methods=['POST',"GET"])
@@ -58,8 +57,3 @@ def upload_image():
         return render_template("index.html", filename=filename, filename2=filename2)
 
     return render_template("index.html")
-
-@app.route('/display/<filename>')
-def display_image(filename):
-    return redirect(url_for('static', filename = '/Images/'+filename),code=301)
-app.run(host='0.0.0.0', port=port, debug=True)
