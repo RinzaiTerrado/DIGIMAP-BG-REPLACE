@@ -1,6 +1,6 @@
 from flask import Flask, render_template,request
 import os
-import simplecv as cv2
+import cv2
 import numpy as np
 import mediapipe as mp
 import matplotlib.pyplot as plt
