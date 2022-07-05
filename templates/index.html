@@ -100,6 +100,17 @@
 
         <image src="{{ url_for('static', filename = '/Output/output.jpeg')}}" class="img-thumbnail"></image>
 
+        {% else %}
+        <image src="static/images/sample.jpg" class="img-thumbnail"></image>
+
+        <h2 class="symbol">+</h2>
+
+        <image src="static/images/background.jpg" class="img-thumbnail"></image>
+
+        <h2 class="symbol">></h2>
+
+        <image src="static/images/output.jpeg" class="img-thumbnail"></image>
+
         {% endif %}
     </div>
 
