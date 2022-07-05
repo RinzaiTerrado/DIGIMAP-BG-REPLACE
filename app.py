@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 
-port = int(os.environ.get('PORT', 5100))
+port = int(os.environ.get('PORT', 17996))
 
 
 @app.route("/", methods=['POST',"GET"])
