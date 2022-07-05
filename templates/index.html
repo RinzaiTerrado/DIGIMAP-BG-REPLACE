@@ -23,7 +23,8 @@
         .image_div {
             margin: auto;
             height: 300px;
-
+            
+            padding-left: 5%;
         }
 
         h1 {
@@ -95,14 +96,14 @@
 
         <image src="{{ url_for('static', filename = '/Images/'+filename2)}}" class="img-thumbnail"></image>
 
-        <h2 class="symbol">=</h2>
+        <h2 class="symbol">></h2>
 
         <image src="{{ url_for('static', filename = '/Output/output.jpeg')}}" class="img-thumbnail"></image>
 
         {% endif %}
     </div>
 
-    <div>
+    <div style="padding-left: 5%;">
 
         <br>
         <form method="post" class="form-inline" action="/" enctype="multipart/form-data">
