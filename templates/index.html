@@ -56,6 +56,8 @@
         }
         .infotext{
             padding-left: 50px;
+            color: white;
+            margin-right: 20%;
         }
         .btn{
             background-color: rgb(86, 110, 80);
@@ -74,12 +76,14 @@
 <body>
     <div class="info">
         <br>
-        <span style="color: white;">Information</span>
-        <br>
-    </div>
+        <span style="color: white;"><h2>Information</h2></span>
+        
         <p class="infotext">RePlace is a web application where you can change your Background by 
             uploading 2 pictures(.jpeg, .png files), the first image to upload will be the sample image, the second image to upload will be the background image, clicking the submit button would produce the output image. Works best when using images with similar sizes. 
         </p>
+        <br>
+    </div>
+       
     <br>
     <div class="image_div">
         {% if filename %}
