@@ -52,8 +52,11 @@
 
         .info{
             background-color: rgb(86, 110, 80);
+            padding-left: 50px;
         }
-
+        .infotext{
+            padding-left: 50px;
+        }
         .btn{
             background-color: rgb(86, 110, 80);
             border-color: rgb(49, 62, 45);
@@ -69,6 +72,14 @@
 </head>
 
 <body>
+    <div class="info">
+        <br>
+        <span style="color: white;">Information</span>
+        <br>
+    </div>
+        <p class="infotext">RePlace is a web application where you can change your Background by 
+            uploading 2 pictures(.jpeg, .png files), the first image to upload will be the sample image, the second image to upload will be the background image, clicking the submit button would produce the output image. Works best when using images with similar sizes. 
+        </p>
     <br>
     <div class="image_div">
         {% if filename %}
@@ -90,8 +101,8 @@
         <br>
         <form method="post" class="form-inline" action="/" enctype="multipart/form-data">
 
-            <input type="file" name="file" autocomplete="off" required>
-            <input type="file" name="file2" autocomplete="off" required>
+            <input type="file" name="file" autocomplete="off" accept="image/png,  image/jpeg" required>
+            <input type="file" name="file2" autocomplete="off" accept="image/png, image/jpeg" required>
             <br>
             <p>
                 <input type="submit" class="btn btn-primary" value="Submit">
@@ -99,13 +110,6 @@
         </form>
     </div>
     <br><br>
-    <div class="info">
-        <br>
-        <h1 style="color: white;">Information</h1>
-        <p>Replace is a web application where you can change your Background by 
-            uploading 2 pictures.
-        </p>
-    </div>
 </body>
 
 </html>
