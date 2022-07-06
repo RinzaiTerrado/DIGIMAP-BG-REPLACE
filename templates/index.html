@@ -90,15 +90,15 @@
     <br>
     <div class="image_div">
         {% if filename %}
-        <image src="{{ url_for('static', filename = '/Images/'+filename)}}" class="img-thumbnail"></image>
+        <image src="{{ url_for('static', filename = '/images/'+filename)}}" class="img-thumbnail"></image>
 
         <h2 class="symbol">+</h2>
 
-        <image src="{{ url_for('static', filename = '/Images/'+filename2)}}" class="img-thumbnail"></image>
+        <image src="{{ url_for('static', filename = '/images/'+filename2)}}" class="img-thumbnail"></image>
 
         <h2 class="symbol">></h2>
 
-        <image src="{{ url_for('static', filename = '/Output/output.jpeg')}}" class="img-thumbnail"></image>
+        <image src="{{ url_for('static', filename = '/output/output.jpeg')}}" class="img-thumbnail"></image>
 
         {% else %}
         <image src="static/images/sample.jpg" class="img-thumbnail"></image>
