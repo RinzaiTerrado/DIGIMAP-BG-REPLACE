@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-@app.route('/', methods=['POST',"GET"])
+@app.route("/", methods=['POST',"GET"])
 def upload_image():
     if request.method == "POST":
         image = request.files['file']
@@ -21,15 +21,16 @@ def upload_image():
         filename = secure_filename(image.filename)
         filename2 = secure_filename(image2.filename)
         basedir = os.path.abspath(os.path.dirname(__file__))
-        image.save("static/Images/"+filename)
-        image2.save("static/Images/"+filename2)
+        image.save("static/images/"+filename)
+        image2.save("static/images/"+filename2)
+
 
 
         change_background_mp = mp.solutions.selfie_segmentation
         change_bg_segment = change_background_mp.SelfieSegmentation()
 
-        sample_img = cv2.imread("static/Images/"+filename)
-        bg_img = cv2.imread("static/Images/"+filename2)
+        sample_img = cv2.imread("static/images/"+filename)
+        bg_img = cv2.imread("static/images/"+filename2)
 
 
         #get smallest width and smallest height
@@ -48,7 +49,7 @@ def upload_image():
 
         output_image = np.where(binary_mask_3, sample_img, resized_bg)  
 
-        cv2.imwrite("static/Images/output.jpeg", output_image)
+        cv2.imwrite("static/output/output.jpeg", output_image)
 
 
         return render_template("index.html", filename=filename, filename2=filename2)
@@ -57,4 +58,4 @@ def upload_image():
 
 @app.route('/display/<filename>')
 def display_image(filename):
-    return redirect(url_for('static', filename = 'Images/'+filename),code=301)
+    return redirect(url_for('static', filename = '/Images/'+filename),code=301)
