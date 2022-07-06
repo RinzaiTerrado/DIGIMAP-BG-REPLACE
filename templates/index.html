@@ -1,0 +1,133 @@
+<html>
+<title>Background Replacement</title>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .img-thumbnail {
+            width: 300px;
+            height: 300px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .box {
+            width: 500px;
+        }
+
+        .symbol {
+            display: inline;
+            color: rgb(86, 110, 80);
+        }
+
+        .image_div {
+            margin: auto;
+            height: 300px;
+            
+            padding-left: 5%;
+        }
+
+        h1 {
+            color: rgb(86, 110, 80);
+            margin-left: 20px;
+            text-align: center;
+        }
+
+        input {
+            display: inline;
+            margin-left: 20px;
+            margin-right: 80px;
+            color: rgb(86, 110, 80);
+        }
+
+        .form-inline {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+        }
+
+        hr{
+            border: 2px solid rgb(86, 110, 80);
+            
+        }
+
+        .info{
+            background-color: rgb(86, 110, 80,0.9);
+            padding-left: 50px;
+        }
+        .infotext{
+            padding-left: 50px;
+            color: white;
+            margin-right: 20%;
+        }
+        .btn{
+            background-color: rgb(86, 110, 80);
+            border-color: rgb(49, 62, 45);
+        }
+
+        .btn:hover {
+  background-color: rgb(49, 62, 45);
+  border-color: rgb(86, 110, 80);
+}
+    </style>
+    <h1>RePlace</h1>
+    <hr>
+</head>
+
+<body>
+    <div class="info">
+        <br>
+        <span style="color: white;"><h2>Information</h2></span>
+        
+        <p class="infotext">RePlace is a web application where you can change your Background by 
+            uploading 2 pictures(.jpeg, .png files), the first image to upload will be the sample image, 
+            the second image to upload will be the background image, clicking the submit button would produce 
+            the output image. Works best when using images with similar sizes. 
+        </p>
+        <br>
+    </div>
+       
+    <br>
+    <div class="image_div">
+        {% if filename %}
+        <image src="{{ url_for('static', filename = 'Images/'+filename)}}" class="img-thumbnail"></image>
+
+        <h2 class="symbol">+</h2>
+
+        <image src="{{ url_for('static', filename = 'Images/'+filename2)}}" class="img-thumbnail"></image>
+
+        <h2 class="symbol">></h2>
+
+        <image src="{{ url_for('static', filename = 'Images/output.jpeg')}}" class="img-thumbnail"></image>
+
+        {% else %}
+        <image src="static/Images/sample.jpg" class="img-thumbnail"></image>
+
+        <h2 class="symbol">+</h2>
+
+        <image src="static/Images/background.jpg" class="img-thumbnail"></image>
+
+        <h2 class="symbol">></h2>
+
+        <image src="static/Images/output.jpeg" class="img-thumbnail"></image>
+
+        {% endif %}
+    </div>
+
+    <div style="padding-left: 5%;">
+
+        <br>
+        <form method="post" class="form-inline" action="/" enctype="multipart/form-data">
+
+            <input type="file" name="file" autocomplete="off" accept="image/png,  image/jpeg" required>
+            <input type="file" name="file2" autocomplete="off" accept="image/png, image/jpeg" required>
+            <br>
+            <p>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </p>
+        </form>
+    </div>
+    <br><br>
+</body>
+
+</html>
