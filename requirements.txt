@@ -1,8 +1,6 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: win-64
-absl-py=1.1.0=pypi_0
-attrs=21.4.0=pypi_0
 blas=1.0=mkl
 bzip2=1.0.8=he774522_0
 ca-certificates=2022.6.15=h5b45459_0
