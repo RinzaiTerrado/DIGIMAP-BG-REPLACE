@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'digimap-mp-instance'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8ABD07CA90244919889795261187EAE5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_54AAB0E0F0C04226B376E4F2370A2B66 }}
